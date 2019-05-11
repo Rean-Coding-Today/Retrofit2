@@ -1,0 +1,1 @@
+The example adapts from : http://www.mocky.io
