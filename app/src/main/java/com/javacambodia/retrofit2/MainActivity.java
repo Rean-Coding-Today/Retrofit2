@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.javacambodia.retrofit2.adapter.PostsAdapter;
+import com.javacambodia.retrofit2.wc.BasicProductVO;
 import com.javacambodia.retrofit2.wp.BasicPostVO;
 
 import java.util.List;
@@ -32,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
 
-
-
-        ApiUtil.getServiceClass().getAllPost().enqueue(new Callback<List<BasicPostVO>>() {
+        ApiUtil.getPostService().getAllPost().enqueue(new Callback<List<BasicPostVO>>() {
             @Override
             public void onResponse(Call<List<BasicPostVO>> call, Response<List<BasicPostVO>> response) {
                 if(response.isSuccessful()){
@@ -51,5 +50,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "error loading from API");
             }
         });
+
+//        ApiUtil.getWooService().getProducts().enqueue(new Callback<List<BasicPostVO>>() {
+//            @Override
+//            public void onResponse(Call<List<BasicPostVO>> call, Response<List<BasicPostVO>> response) {
+//                if(response.isSuccessful()){
+//                    List<BasicPostVO> postList = response.body();
+//                    Log.d(TAG, "Returned count " + postList.size());
+//                    PostsAdapter adapter = new PostsAdapter(getApplicationContext(), postList);
+//                    recyclerView.setAdapter(adapter);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<BasicPostVO>> call, Throwable t) {
+//                //showErrorMessage();
+//                Log.d(TAG, "error loading from API");
+//            }
+//        });
     }
 }

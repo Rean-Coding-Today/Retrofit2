@@ -10,7 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface RetrofitInterface {
+public interface PostServiceInterface {
 
     @GET("v2/posts")
     public Call<List<BasicPostVO>> getAllPost();
